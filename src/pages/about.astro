@@ -1,30 +1,18 @@
 ---
-import AboutHeroImage from '../assets/blanchelin_small.jpg';
+import AboutHeroImage from '../assets/about.png';
 import Layout from '../layouts/About.astro';
+import { Image } from 'astro:assets';
 ---
 
 <Layout
 	title="About Me"
 	description="Benoît Armbruster"
-	pubDate={new Date('August 11 2025')}
-	heroImage={AboutHeroImage}
+	pubDate={new Date('August 18 2025')}
 >
-	<p> 👋 Hi, I’m Benoit.</p>
-	<p>
-		For years, I’ve carried around a notebook full of ideas — some big, some small, all waiting for the right moment to take shape.
-	</p>
-	<p>
-		Now, with the rise of generative AI, I’ve found the perfect partner to help turn those ideas into reality.
-	</p>
-	<p>
-		This blog is my open workshop: a place where I explore technology, creativity, and the simple joy of making things happen.
-		You might find posts about building data platforms, experimenting with AI, or even stories inspired by my evenings in the garden or long hikes in nature.
-	</p>
-	<p>
-		Most of this happens late at night, when the house is quiet and the kids are asleep — the perfect time to think, create, and write.
-		And if you’re reading this with a good glass of wine, then you’re already doing it right.
-	</p>
-	<p>
-		Have fun! 
-	</p>
+	<p>👋 Hi, I’m Benoit — a data architect who has been passionate about data warehouses and business intelligence since 2010. Over the years, I’ve had the chance to work with a wide range of tools, from Qlikview, Tableau and PowerBI to Snowflake and Microsoft SQL Server, but also some older or more specialized solutions such as Crystal Reports, Talend, Essbase ....</p>
+	<Image src={AboutHeroImage} alt="" style={{ float: 'right', marginLeft: '20px' }} />
+	<p>From the very beginning, my approach has always been the same: focus on the business needs and deliver concrete, effective solutions for end users. More than once, I’ve had to challenge flashy dashboards that looked impressive but failed to provide real value. As an architect, I also design data warehouses, where I often push back against common misconceptions — too much history, too much data, or too little focus on data quality — as well as the ever-changing “trends” in architectures and tools. And while I value best practices, I believe delivering a working project always comes first, even if it means compromising on perfection. To me, an imperfect solution that helps users today is better than a perfect one that never gets delivered.</p>
+	<p>This blog is my way of sharing that experience. It’s both a space for reflection and a practical support tool to frame projects and create solutions that truly transform data into value.</p>
+	<p>Outside of work, I’m a father, which doesn’t always leave much free time. I enjoy taking care of my home, improving the garden, or transforming existing spaces.</p>
+	<p>And when I do get a quiet moment, you’ll probably find me enjoying a good glass of wine or a beer — ideally in the garden after finishing a DIY project, even if it didn’t quite go as planned</p>
 </Layout>

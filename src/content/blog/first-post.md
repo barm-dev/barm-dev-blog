@@ -2,7 +2,7 @@
 title: 'Welcome to my blog !'
 description: 'First post on my blog !! :)'
 pubDate: 'Aug 12 2025'
-heroImage: '../../assets/first_post.jpg'
+heroImage: '../../assets/001_barm_dev_first_post.png'
 ---
 
 👋 Hi, I’m Benoit.
