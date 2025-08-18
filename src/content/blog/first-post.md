@@ -1,20 +1,16 @@
 ---
-title: 'Welcome to my blog !'
-description: 'First post on my blog !! :)'
-pubDate: 'Aug 12 2025'
+title: 'A First Post, Finally!'
+description: 'Or, how it is difficult to make tangible things.'
+pubDate: 'Aug 18 2025'
 heroImage: '../../assets/001_barm_dev_first_post.png'
 ---
 
-👋 Hi, I’m Benoit.
+It feels almost strange to write these words: my very first blog post. For years, I’ve wanted to build this space — a place to share ideas, experiments, and lessons learned. But every time I tried, something got in the way. Too many project ideas, too much perfectionism, and maybe a bit of hesitation to put my work out there.
 
-For years, I’ve carried around a notebook full of ideas — some big, some small, all waiting for the right moment to take shape.
+It’s been a long time since I last developed a web application (hello Symfony 👋), and starting over wasn’t easy. But thanks to the Astro framework — and some help from ChatGPT, both for rewriting my “About” page and even for creating the illustrations — I finally managed to bring this blog to life.
 
-Now, with the rise of generative AI, I’ve found the perfect partner to help turn those ideas into reality.
+Over the years, I’ve collected countless ideas: projects in data warehouses, BI, AI, and even application building in general. The problem was never a lack of ideas, but the difficulty of turning them into something tangible. They lived in notebooks, drafts, or half-finished prototypes — but rarely became real.
 
-This blog is my open workshop: a place where I explore technology, creativity, and the simple joy of making things happen.
-You might find posts about building data platforms, experimenting with AI, or even stories inspired by my evenings in the garden or long hikes in nature.
+That’s why I’m starting this blog. My goal is to use it as a framework to guide and track my projects, keeping me focused on what really matters: building proof-of-concepts, aiming for an MVP, and resisting the temptation to get lost in secondary details or perfectionism.
 
-Most of this happens late at night, when the house is quiet and the kids are asleep — the perfect time to think, create, and write.
-And if you’re reading this with a good glass of wine, then you’re already doing it right.
-
-Have fun! 
+So here we are. A first post, finally. I hope this blog will not only keep me accountable, but also turn some of those long-standing ideas into something real. And maybe, along the way, it can inspire or resonate with others too. 🚀
