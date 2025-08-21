@@ -13,4 +13,4 @@ Over the years, I’ve collected countless ideas: projects in data warehouses, B
 
 That’s why I’m starting this blog. My goal is to use it as a framework to guide and track my projects, keeping me focused on what really matters: building proof-of-concepts, aiming for an MVP, and resisting the temptation to get lost in secondary details or perfectionism.
 
-So here we are. A first post, finally. I hope this blog will not only keep me accountable, but also turn some of those long-standing ideas into something real. And maybe, along the way, it can inspire or resonate with others too. 🚀
+So here we are. A first post, finally. I hope this blog will not only keep me accountable, but also turn some of those long-standing ideas into something real. And maybe, along the way, it can inspire or resonate with others too. 
