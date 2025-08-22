@@ -1,12 +1,14 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import { Image } from 'astro:assets';
+import profile_logo from '../assets/barm-profile-logo.png';
 ---
 
 <header>
 	<nav>
 		<a href="/">
-		<img src="/barm-profile-logo.png" width="30" height="30" viewBox="0 0 16 16"/></a>
+		<Image src={profile_logo} width="32" height="32" viewBox="0 0 16 16" alt="go back to home"/></a>
 		<div class="internal-links">
 			<HeaderLink href="/">Blog</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
