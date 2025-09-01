@@ -1,0 +1,24 @@
+---
+title: 'xxx'
+description: 'xxx'
+pubDate: 'Aug 31 2025'
+heroImage: '../../assets/post_tmp_img.jpg'
+---
+
+#### Source
+
+##### Preliminary
+- Docker - https://www.reddit.com/r/raspberry_pi/comments/1kka7cu/yes_you_can_run_docker_on_pi_noob_tutorial/
+
+##### Reverse proxy?
+- NGnx - https://www.reddit.com/r/homelab/comments/1kfwm4o/raspberry_pi_as_a_reverse_proxy_too_much/
+- Caddy - https://caddyserver.com/docs/quick-starts/reverse-proxy
+- Caddy 2 - https://caddy.community/t/using-caddy-as-a-reverse-proxy-in-a-home-network/9427?u=matt 
+- Caddy (Reddit) - https://www.reddit.com/r/jellyfin/comments/iuruns/any_issues_using_a_raspberry_pi_as_a_reverse_proxy/
+
+
+#### Step by step 
+
+1- Determine the IP of the Raspberry. 
+Connect to the router and get the IP.
+Router IP: > 192.168.1.1 Credentials : admin / ? (besoin du pwd au grenier)
