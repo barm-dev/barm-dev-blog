@@ -14,22 +14,23 @@ Last update : Aug 21 2025
 - [ ] Post - Write a post concerning data mapper app
 
 ##### 🌐 Network
-- [ ] Work - Create a reverse proxy with a Raspberry Pi (2)
-- [ ] Vlog - Video about the issue I’m facing with my network box (4)
-- [ ] Work - Find a solution to have a VM accessible from anywhere (self-hosted or cloud platform?) (8)
+- [ ] Work - Create a reverse proxy with a Raspberry Pi
+- [ ] Work - Find a solution to have a VM accessible from anywhere (self-hosted or cloud platform?)
 
 ##### 💻 Software Development
-- [ ] Article - Dynamic filter in PowerApps (1)
-- [ ] Article - My impressions on development with AI – include the "what client wants" image (3)
+- [ ] Article - Dynamic filter in PowerApps
+- [ ] Article - My impressions on development with AI – include the "what client wants" image
 
 ##### 📝 Blog
-- [ ] Work - Understand how to categorize posts in Astro (5)
-- [ ] Work - Differentiate between posts and pages (6)
-- [ ] Work - Choose a domain name and set it up (7)
+- [ ] Work - Add rss feed
+- [ ] Work - Understand how to categorize posts in Astro
+- [ ] Work - Differentiate between posts and pages
 - [ ] Work - Add comments section with Giscus
 
 #### ✅ Completed
-- [X] Launch the blog
+- [x] Launch the blog
 - [x] Write the first post
 - [x] Add a todo list or task tracker
+- [x] Post - The issue I’m facing with my rack
+- [x] Work - Choose a domain name and set it up
 
