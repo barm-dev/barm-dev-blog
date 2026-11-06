@@ -1,62 +1,47 @@
-# Astro Starter Kit: Blog
+# barm-dev-blog
 
-```sh
-npm create astro@latest -- --template blog
+Source of [blog.barm.dev](https://blog.barm.dev). No framework: Markdown files,
+one HTML template, one stylesheet and a small Python script. French is served
+at the root, English under `/en/`.
+
+```
+content/posts/   articles, NNN-slug.fr.md and NNN-slug.en.md
+content/pages/   about, roadmap
+content/drafts/  not published
+templates/       base.html
+static/          CSS, fonts, images, copied as is
+build.py         writes everything to dist/; interface text is at the top
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Local preview
 
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+```powershell
+py -3.12 -m pip install --user -r requirements.txt   # once
+py -3.12 build.py --serve                            # http://localhost:4321
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Re-run the second command after editing a file.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## New post
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+Create `content/posts/005-my-slug.fr.md`, and the same name in `.en.md` if you
+translate it. A post can exist in one language only: the language button then
+leads to the other language's home page.
 
-Any static assets, like images, can be placed in the `public/` directory.
+```markdown
+---
+title: Mon titre
+description: Une ligne pour la liste et le flux RSS
+topic: Data
+date: 2026-11-06
+hero: /img/005/hero.png
+---
 
-## 🧞 Commands
+Texte en Markdown. Images : ![Texte alternatif](/img/005/photo.jpg){width=400 height=300}
+```
 
-All commands are run from the root of the project, from a terminal:
+Add `draft: true` to the header to hide a post from the site; `build.py --drafts`
+shows hidden posts in the local preview. A hidden post is still readable on GitHub
+if it is committed: list it in `.gitignore` to keep it local.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+`hero` is optional and works best at 900×200. Push to `master` and Vercel builds it.

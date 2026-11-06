@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="$lang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>$title</title>
+<meta name="description" content="$description">
+<meta name="author" content="$author">
+<link rel="canonical" href="$url">
+$alternates<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="alternate" type="application/rss+xml" title="$feed" href="$rss">
+<meta property="og:type" content="$kind">
+<meta property="og:locale" content="$locale">
+<meta property="og:site_name" content="barm.dev">
+<meta property="og:title" content="$title">
+<meta property="og:description" content="$description">
+<meta property="og:url" content="$url">
+<meta property="og:image" content="$image">
+<meta name="twitter:card" content="summary">
+<link rel="preload" href="/fonts/text.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+$structured</head>
+<body>
+<a class="skip" href="#main">$skip</a>
+<div class="page">
+  <header class="top">
+    <a class="brand" href="$home"><img src="/img/avatar.png" alt="" width="32" height="32">barm.dev</a>
+    <nav class="links" aria-label="$menu">$nav</nav>
+    <div class="tools">
+      <a class="switch" href="$switch_href" hreflang="$switch_lang" lang="$switch_lang" aria-label="$switch_label">$switch</a>
+      <button class="theme" type="button" aria-label="$theme" onclick="toggleTheme()"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm0 12.5v-11a5.5 5.5 0 0 1 0 11Z"/></svg></button>
+    </div>
+  </header>
+  <main id="main">$main</main>
+  <footer class="bottom">
+    <span>© $year $author</span>
+    <nav aria-label="$menu">
+      <a href="$linkedin">LinkedIn</a>
+      <a href="$github">GitHub</a>
+      <a href="$rss">RSS</a>
+      <a href="$roadmap_href">$roadmap</a>
+    </nav>
+  </footer>
+</div>
+<script>
+function toggleTheme(){
+  var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+  r.dataset.theme=dark?"light":"dark";
+  try{localStorage.setItem("theme",r.dataset.theme)}catch(e){}
+}
+</script>
+</body>
+</html>

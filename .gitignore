@@ -1,29 +1,13 @@
-# build output
 dist/
-# generated types
-.astro/
-
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-
-# environment variables
+__pycache__/
+.vercel/
 .env
-.env.production
-
-# macOS-specific files
 .DS_Store
-
-# jetbrains setting folder
 .idea/
-
-
-# old files images and blog content
 old_content/
 old_assets/
+
+# Unpublished series, kept local until reviewed
+content/posts/005-*
+content/posts/006-*
+content/posts/008-*
