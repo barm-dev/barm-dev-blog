@@ -1,5 +1,6 @@
 dist/
 __pycache__/
+.pydeps/
 .vercel/
 .env
 .DS_Store
