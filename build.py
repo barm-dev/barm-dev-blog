@@ -18,7 +18,7 @@ ROOT = Path(__file__).parent
 DIST = ROOT / "dist"
 SITE = "https://blog.barm.dev"
 AUTHOR = "Benoît Armbruster"
-LINKEDIN = "https://www.linkedin.com/in/benoît-armbruster-a573332b"
+LINKEDIN = "https://www.linkedin.com/in/beno%C3%AEt-armbruster-a573332b"
 GITHUB = "https://github.com/barm-dev"
 PORT = 4321
 
@@ -129,14 +129,19 @@ def link(lang, path):
 
 
 def person(lang):
-    return json.dumps({
-        "@context": "https://schema.org", "@type": "Person", "name": AUTHOR,
-        "jobTitle": TEXT[lang]["job"], "url": SITE + link(lang, "/"),
-        "image": SITE + "/img/avatar.png", "sameAs": [LINKEDIN, GITHUB],
-    }, ensure_ascii=False)
+    return {
+        "@type": "Person", "name": AUTHOR, "jobTitle": TEXT[lang]["job"],
+        "url": SITE + link(lang, "/about/"), "image": SITE + "/img/avatar.png",
+        "sameAs": [LINKEDIN, GITHUB],
+    }
 
 
-def page(lang, path, title, description, main, image="/img/avatar.png", kind="website",
+def json_ld(data):
+    data = {"@context": "https://schema.org", **data}
+    return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
+
+
+def page(lang, path, title, description, main, image=None, kind="website",
          nav="", translated=True, structured=""):
     """Writes one page. `translated` says whether `path` exists in the other language."""
     t = TEXT[lang]
@@ -152,7 +157,7 @@ def page(lang, path, title, description, main, image="/img/avatar.png", kind="we
         ) + f'<link rel="alternate" hreflang="x-default" href="{SITE}{path}">\n'
     content = BASE.substitute(
         lang=lang, title=esc(title), description=esc(description, quote=True),
-        url=SITE + link(lang, path), image=SITE + image, kind=kind, locale=t["locale"],
+        url=SITE + link(lang, path), image=SITE + (image or f"/img/og-{lang}.png"), kind=kind, locale=t["locale"],
         alternates=alternates, structured=structured, nav=links, main=main,
         home=link(lang, "/"), author=AUTHOR, rss=link(lang, "/rss.xml"), feed=t["feed"],
         switch_href=link(other, path if translated else "/"), switch_lang=other,
@@ -187,7 +192,7 @@ def home(lang, posts):
   <div class="row-head" aria-hidden="true"><span>{t["col_date"]}</span><span>{t["col_post"]}</span><span>{t["col_topic"]}</span></div>
   <ol>{rows}</ol>
 </section>"""
-    structured = f'<script type="application/ld+json">{person(lang)}</script>\n'
+    structured = json_ld(person(lang))
     page(lang, "/", t["site"], t["description"], main, nav="posts", structured=structured)
 
 
@@ -217,8 +222,15 @@ def post_page(lang, post, newer, older, translated):
   </div>
 </article>
 <nav class="neighbours" aria-label="{t["other_posts"]}">{neighbour(lang, older, "previous")}{neighbour(lang, newer, "next")}</nav>"""
+    structured = json_ld({
+        "@type": "BlogPosting", "headline": post["title"], "description": post["description"],
+        "datePublished": post["date"].isoformat(), "inLanguage": lang,
+        "url": SITE + link(lang, post["path"]), "image": SITE + f"/img/og-{lang}.png",
+        "author": person(lang),
+    })
+    # Share previews use the 1200x630 card: post heroes are too wide for LinkedIn.
     page(lang, post["path"], f'{post["title"]} · {AUTHOR}', post["description"], main,
-         image=post.get("hero", "/img/avatar.png"), kind="article", nav="posts", translated=translated)
+         kind="article", nav="posts", translated=translated, structured=structured)
 
 
 def static_page(lang, name, nav=""):
@@ -232,7 +244,9 @@ def static_page(lang, name, nav=""):
   </div>
 </article>"""
     translated = (ROOT / f"content/pages/{name}.{OTHER[lang]}.md").exists()
-    page(lang, f"/{name}/", f'{meta["title"]} · {AUTHOR}', meta["description"], main, nav=nav, translated=translated)
+    structured = json_ld({"@type": "ProfilePage", "mainEntity": person(lang)}) if name == "about" else ""
+    page(lang, f"/{name}/", f'{meta["title"]} · {AUTHOR}', meta["description"], main, nav=nav,
+         translated=translated, structured=structured)
 
 
 def rss(lang, posts):
@@ -258,11 +272,14 @@ def rss(lang, posts):
 
 
 def sitemap(posts):
-    paths = []
+    entries = []
     for lang, items in posts.items():
-        paths += [link(lang, path) for path in ("/", "/about/")]
-        paths += [link(lang, p["path"]) for p in items]
-    urls = "".join(f"\n  <url><loc>{SITE}{path}</loc></url>" for path in paths)
+        latest = items[0]["date"].isoformat() if items else None
+        entries += [(link(lang, "/"), latest), (link(lang, "/about/"), None)]
+        entries += [(link(lang, p["path"]), p["date"].isoformat()) for p in items]
+    urls = "".join(
+        f"\n  <url><loc>{SITE}{path}</loc>" + (f"<lastmod>{day}</lastmod>" if day else "") + "</url>"
+        for path, day in entries)
     write("sitemap.xml", f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}
 </urlset>
