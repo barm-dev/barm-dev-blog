@@ -14,7 +14,7 @@ Voici la liste des sujets en cours.
 ## La page Roadmap
 Pour garder quelque part toutes ces nouvelles idées, j’ai créé une page qui les rassemble.
 Pour le moment, c’est plus une liste de tâches qu’une roadmap. On verra comment ça évolue !
-La page [roadmap](/roadmap/).
+*(Cette page a été retirée depuis.)*
 
 ## Réseau
 Pour travailler sur mon blog et mes autres projets personnels, j’utilise différents ordinateurs selon le moment et le lieu : dans le train, à mon bureau à la maison ou dans le salon tard le soir.

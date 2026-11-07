@@ -36,7 +36,7 @@ TEXT = {
         "fields": (("Aujourd’hui", "Architecte data"), ("Avant", "Data engineer"),
                    ("Domaines", "Entrepôts de données, business intelligence"),
                    ("Outils", "Snowflake, dbt, Qlik, Power BI, SQL Server (SSIS, SSAS)")),
-        "posts": "Articles", "about": "À propos", "roadmap": "Roadmap",
+        "posts": "Articles", "about": "À propos",
         "col_date": "Date", "col_post": "Article", "col_topic": "Sujet",
         "previous": "Précédent", "next": "Suivant", "other_posts": "Autres articles",
         "skip": "Aller au contenu", "theme": "Changer de thème", "menu": "Navigation",
@@ -56,7 +56,7 @@ TEXT = {
         "fields": (("Today", "Data architect"), ("Before", "Data engineer"),
                    ("Areas", "Data warehouses, business intelligence"),
                    ("Tools", "Snowflake, dbt, Qlik, Power BI, SQL Server (SSIS, SSAS)")),
-        "posts": "Posts", "about": "About", "roadmap": "Roadmap",
+        "posts": "Posts", "about": "About",
         "col_date": "Date", "col_post": "Post", "col_topic": "Topic",
         "previous": "Previous", "next": "Next", "other_posts": "Other posts",
         "skip": "Skip to content", "theme": "Switch colour theme", "menu": "Main",
@@ -157,7 +157,7 @@ def page(lang, path, title, description, main, image="/img/avatar.png", kind="we
         home=link(lang, "/"), author=AUTHOR, rss=link(lang, "/rss.xml"), feed=t["feed"],
         switch_href=link(other, path if translated else "/"), switch_lang=other,
         switch_label=t["switch_label"], switch=t["switch"], skip=t["skip"], menu=t["menu"],
-        theme=t["theme"], roadmap_href=link(lang, "/roadmap/"), roadmap=t["roadmap"],
+        theme=t["theme"],
         linkedin=LINKEDIN, github=GITHUB, year=date.today().year,
     )
     write(link(lang, path) + "index.html", content)
@@ -260,7 +260,7 @@ def rss(lang, posts):
 def sitemap(posts):
     paths = []
     for lang, items in posts.items():
-        paths += [link(lang, path) for path in ("/", "/about/", "/roadmap/")]
+        paths += [link(lang, path) for path in ("/", "/about/")]
         paths += [link(lang, p["path"]) for p in items]
     urls = "".join(f"\n  <url><loc>{SITE}{path}</loc></url>" for path in paths)
     write("sitemap.xml", f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -281,7 +281,6 @@ def build():
             older = items[index + 1] if index + 1 < len(items) else None
             post_page(lang, post, newer, older, post["slug"] in slugs)
         static_page(lang, "about", nav="about")
-        static_page(lang, "roadmap")
         rss(lang, items)
     sitemap(posts)
     print(f'{len(posts["fr"])} FR and {len(posts["en"])} EN posts written to {DIST}')

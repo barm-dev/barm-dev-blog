@@ -8,7 +8,8 @@ __pycache__/
 old_content/
 old_assets/
 
-# Unpublished series, kept local until reviewed
-content/posts/005-*
-content/posts/006-*
-content/posts/008-*
+# Local editorial notes
+*.local.md
+
+# Personal ChatGPT export, never publish
+extract-chat-gpt/

@@ -6,7 +6,7 @@ at the root, English under `/en/`.
 
 ```
 content/posts/   articles, NNN-slug.fr.md and NNN-slug.en.md
-content/pages/   about, roadmap
+content/pages/   about
 content/drafts/  not published
 templates/       base.html
 static/          CSS, fonts, images, copied as is

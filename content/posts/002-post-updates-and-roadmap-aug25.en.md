@@ -14,7 +14,7 @@ Below the list of ongoing topics.
 ## The roadmap page
 In order to keep somewhere all these new ideas, I have created a new Roadmap page with all my ideas.
 For the moment, it is more a to do list than a roadmap, let's see how this evolves !
-The [roadmap](/en/roadmap/) page.
+*(This page has since been removed.)*
 
 ## Network
 To work on my blog and other personal projects, I use different computers depending on the time and location—whether I'm on the train, at my desk at home, or in the living room late at night.
